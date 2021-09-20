@@ -2,6 +2,19 @@ FROM linuxserver/plex:latest
 
 ARG PLEX_AUTOSCAN_BRANCH="master"
 
+ENV \
+  # Plex_autoscan config file
+  PLEX_AUTOSCAN_CONFIG=/config/plex_autoscan/config.json \
+  # Plex_autoscan queue db
+  PLEX_AUTOSCAN_QUEUEFILE=/config/plex_autoscan/queue.db \
+  # Plex_autoscan log file
+  PLEX_AUTOSCAN_LOGFILE=/config/plex_autoscan/plex_autoscan.log \
+  # Plex_autoscan cache db
+  PLEX_AUTOSCAN_CACHEFILE=/config/plex_autoscan/cache.db \
+  # Plex_autoscan disable docker and sudo
+  USE_DOCKER=false \
+  USE_SUDO=false
+
 RUN \
   # Install dependencies
   apt-get update && \
@@ -33,16 +46,3 @@ RUN \
     /var/tmp/*
 
 COPY root/ /
-
-ENV \
-  # Plex_autoscan config file
-  PLEX_AUTOSCAN_CONFIG=/config/plex_autoscan/config.json \
-  # Plex_autoscan queue db
-  PLEX_AUTOSCAN_QUEUEFILE=/config/plex_autoscan/queue.db \
-  # Plex_autoscan log file
-  PLEX_AUTOSCAN_LOGFILE=/config/plex_autoscan/plex_autoscan.log \
-  # Plex_autoscan cache db
-  PLEX_AUTOSCAN_CACHEFILE=/config/plex_autoscan/cache.db \
-  # Plex_autoscan disable docker and sudo
-  USE_DOCKER=false \
-  USE_SUDO=false
