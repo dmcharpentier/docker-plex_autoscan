@@ -1,4 +1,4 @@
-FROM linuxserver/plex:latest
+FROM lscr.io/linuxserver/plex:latest
 
 ARG PLEX_AUTOSCAN_BRANCH="master"
 
